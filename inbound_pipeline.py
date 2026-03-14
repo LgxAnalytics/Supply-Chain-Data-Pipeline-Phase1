@@ -8,7 +8,7 @@ from datetime import datetime
 from openpyxl.styles import Font, PatternFill, Border, Side, Alignment
 
 # 1. DYNAMIC ENVIRONMENT SETUP
-base_path = os.getcwd()
+base_path = base_path = os.path.dirname(os.path.abspath(__file__))
 archive_base = os.path.join(base_path, "ARCHIVE")
 reports_base = os.path.join(base_path, "Incoming_Reports")
 history_file = os.path.join(base_path, "processed_history.txt")

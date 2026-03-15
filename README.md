@@ -1,8 +1,3 @@
-Hubert, rozumiem frustrację. Problem polega na tym, że GitHub widzi te potrójne tyldy w moim tekście i traktuje je jako polecenie, a Ty chcesz dostać czysty tekst do skopiowania, który sam w sobie te tyldy zawiera.
-
-Zrobimy to w sposób "brutalny" – wysyłam Ci to w bloku kodu, ale UWAŻAJ: na samym początku i na samym końcu Twojego pliku README na GitHubie NIE MOŻE być żadnych tyld. Ma być tylko to, co jest w środku poniższego szarego pola.
-
-Markdown
 
 # 📦 Logistics Intelligence Engine: Automated Stock & Inbound Tracker
 

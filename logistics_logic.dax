@@ -1,0 +1,41 @@
+Stock_Status = 
+VAR CurrentInventory = SUM('Cleaned_Stock'[Quantity])
+VAR PlannedInbound = SUM('Wk_11'[Quantity])
+
+RETURN
+SWITCH(
+    TRUE(),
+    CurrentInventory > 0, "🟢 In Stock",
+    CurrentInventory <= 0 && PlannedInbound > 0, "🟡 OOS - Inbound Pending",
+    "🔴 Critical Shortage"
+)
+
+
+
+ETA_Week = 
+VAR NextWeekArrival = MAX('Wk_11'[Download_Date]) + 7
+RETURN
+IF(
+    [Dostawa_Inbound] > 0, 
+    "Wk " & WEEKNUM(NextWeekArrival), 
+    BLANK()
+)
+
+Master_SKU1 = 
+DISTINCT(
+    UNION(
+        VALUES('Cleaned_Stock'[Clean_SKU]), 
+        VALUES('Wk_11'[Item_SKU])
+    )
+)
+
+
+Stock_Availability_% = 
+DIVIDE(
+    CALCULATE(COUNTROWS('Master_SKU1'), [Stock_Status] = "🟢 In Stock"),
+    COUNTROWS('Master_SKU1'),
+    0
+)
+
+
+
